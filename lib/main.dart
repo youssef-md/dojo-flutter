@@ -1,117 +1,114 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dojo/models/products.dart';
+import 'package:flutter_dojo/screens/products_detail.dart';
+import 'package:flutter_dojo/screens/products_grid.dart';
 
 void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+class MyApp extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-        // This makes the visual density adapt to the platform that you run
-        // the app on. For desktop platforms, the controls will be smaller and
-        // closer together (more dense) than on mobile platforms.
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
+  _MyAppState createState() => _MyAppState();
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+class _MyAppState extends State<MyApp> {
+  final List<Product> _products = [
+    Product(
+      id: 'p1',
+      title: 'Nike AirMax 270',
+      description:
+          'Lorem Ipsum qualquer descrição aqui só para mostrar que é uma descrição.',
+      imageUrl:
+          'https://balishoes.vteximg.com.br/arquivos/ids/164320-600-600/tenis-nike-air-max-270-FEMININO-014-black-light-bone-hot-35.jpg?v=637197272805730000',
+    ),
+    Product(
+      id: 'p2',
+      title: 'Nike AirMax LTD3',
+      description:
+          'Lorem Ipsum qualquer descrição aqui só para mostrar que é uma descrição.',
+      imageUrl:
+          'https://i.zst.com.br/images/tenis-nike-masculino-casual-air-max-ltd-3-photo857874833-12-1e-15.jpg',
+    ),
+    Product(
+      id: 'p3',
+      title: 'Nike Air Zoom Alphafly',
+      description:
+          'Lorem Ipsum qualquer descrição aqui só para mostrar que é uma descrição.',
+      imageUrl:
+          'https://images.lojanike.com.br/1024x1024/produto/258297_2502083_20200914141144.jpg',
+    ),
+    Product(
+      id: 'p4',
+      title: 'Nike Revolution 5',
+      description:
+          'Lorem Ipsum qualquer descrição aqui só para mostrar que é uma descrição.',
+      imageUrl:
+          'https://static.netshoes.com.br/produtos/tenis-nike-revolution-5-masculino/06/HZM-1731-006/HZM-1731-006_zoom1.jpg?ts=1568717638&ims=544x',
+    ),
+    Product(
+      id: 'p5',
+      title: 'Nike Joyride',
+      description:
+          'Lorem Ipsum qualquer descrição aqui só para mostrar que é uma descrição.',
+      imageUrl:
+          'https://images.lojanike.com.br/1024x1024/produto/210523_1956413_20200218151454.jpg',
+    ),
+    Product(
+      id: 'p6',
+      title: 'Nike Quest 2',
+      description:
+          'Lorem Ipsum qualquer descrição aqui só para mostrar que é uma descrição.',
+      imageUrl:
+          'https://authenticfeet.vteximg.com.br/arquivos/ids/228716-1000-1000/Tenis-Nike-Air-Max-27-React-Masculino-Multicolor.jpg?v=637044260135100000',
+    ),
+    Product(
+      id: 'p7',
+      title: 'Nike Quest 2',
+      description:
+          'Lorem Ipsum qualquer descrição aqui só para mostrar que é uma descrição.',
+      imageUrl:
+          'https://static.netshoes.com.br/produtos/tenis-nike-quest-2-masculino/26/HZM-1743-026/HZM-1743-026_zoom1.jpg?ts=1562156633',
+    ),
+    Product(
+      id: 'p8',
+      title: 'Nike Air FOrce 1',
+      description:
+          'Lorem Ipsum qualquer descrição aqui só para mostrar que é uma descrição.',
+      imageUrl:
+          'https://45582.cdn.simplo7.net/static/45582/sku/nike-tenis-nike-air-force-1-tm-5d9f250bade30-1591985551765.jpg',
+    ),
+  ];
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
+  bool isDarkMode = false;
 
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
+  void changeTheme() {
     setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
+      isDarkMode = isDarkMode ? false : true;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.purple,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      themeMode: isDarkMode ? ThemeMode.dark : ThemeMode.light,
+      debugShowCheckedModeBanner: false,
+      home: ProductsGrid(
+        products: _products,
+        changeTheme: changeTheme,
+        isDarkMode: isDarkMode,
+      ),
+      routes: {
+        ProductDetail.routeName: (ctx) => ProductDetail(),
+      },
     );
   }
 }
